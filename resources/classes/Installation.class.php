@@ -8,9 +8,10 @@
  */
 class Installation {
 
-	public static function createSettingsFile($dbHostname, $dbName, $dbUsername, $dbPassword, $tablePrefix) {
+	public static function createSettingsFile($dbHostname, $dbPort, $dbName, $dbUsername, $dbPassword, $tablePrefix) {
 		$encryptionSalt = Utils::generateRandomAlphanumericStr("DDD");
 		$dbUsername = Utils::sanitize($dbUsername);
+		$dbPort = Utils::sanitize($dbPort);
 		$dbPassword = Utils::sanitize($dbPassword);
 		$tablePrefix = Utils::sanitize($tablePrefix);
 
@@ -18,6 +19,7 @@ class Installation {
 <?php
 
 \$dbHostname     = '$dbHostname';
+\$dbPort     	 = '$dbPort';
 \$dbName         = '$dbName';
 \$dbUsername     = '$dbUsername';
 \$dbPassword     = '$dbPassword';
@@ -200,6 +202,7 @@ END;
         $file = file(__DIR__ . "/../../settings.php");
         $found = array(
             "dbHostname"    => false,
+            "dbPort"    	=> false,
             "dbName"        => false,
             "dbUsername"    => false,
             "dbPassword"    => false,

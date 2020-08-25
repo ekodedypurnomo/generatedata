@@ -29,6 +29,11 @@
             </div>
             <div class="gdError" id="dbHostname_error"></div>
             <div class="gdField">
+                <label for="dbName">{$L.host_port}</label>
+                <input type="text" id="dbPort" value="" />
+            </div>
+            <div class="gdError" id="dbPort_error"></div>
+            <div class="gdField">
                 <label for="dbName">{$L.database_name}</label>
                 <input type="text" id="dbName" value="" />
             </div>

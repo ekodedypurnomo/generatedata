@@ -9,12 +9,13 @@ class Database {
 
 	public function __construct() {
 		$dbHostname = Core::getHostname();
+		$dbPort = Core::getPort();
 		$dbUsername = Core::getDbUsername();
 		$dbPassword = Core::getDbPassword();
 		$dbName     = Core::getDbName();
 
 		try {
-			$this->link = mysqli_connect($dbHostname, $dbUsername, $dbPassword, $dbName);
+			$this->link = mysqli_connect($dbHostname, $dbUsername, $dbPassword, $dbName, $dbPort);
 		} catch (Exception $e) {
 			// or die("Couldn't connect to database: " . mysql_error());
 		}
@@ -40,10 +41,10 @@ class Database {
 	 * Checks to see if the database information provided is valid or not.
 	 * @access public
 	 */
-	public static function testDbSettings($dbHostname, $dbName, $dbUsername, $dbPassword) {
+	public static function testDbSettings($dbHostname, $dbPort, $dbName, $dbUsername, $dbPassword) {
 		$dbConnectionError = "";
 		$lang = Core::$language->getCurrentLanguageStrings();
-		$link = @mysqli_connect($dbHostname, $dbUsername, $dbPassword, $dbName);
+		$link = @mysqli_connect($dbHostname, $dbUsername, $dbPassword, $dbName, $dbPort);
 		if (mysqli_connect_errno($link)) {
 			$dbConnectionError = mysqli_connect_error();
 		}

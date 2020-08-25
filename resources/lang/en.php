@@ -74,6 +74,7 @@ $L["no_js"] = "Please enable javascript in your browser.";
 $L["no_js_blurb"] = "You know this is, like, the 21st century? The Data Generator script relies heavily on javascript - things just plain won't work without it. You&#39;ll need to enable it in your browser then refresh this page.";
 $L["install"] = "Install";
 $L["host_name"] = "Host Name";
+$L["host_port"] = "Port";
 $L["installation"] = "Installation";
 $L["table_prefix"] = "Table Prefix";
 $L["database_name"] = "Database Name";

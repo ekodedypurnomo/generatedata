@@ -6,6 +6,7 @@
  * at least generate the file content so you can create it yourself.
  */
 $dbHostname     = '';
+$dbPort         = '';
 $dbName         = '';
 $dbUsername     = '';
 $dbPassword     = '';

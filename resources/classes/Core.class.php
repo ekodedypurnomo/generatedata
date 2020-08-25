@@ -14,6 +14,7 @@ class Core {
 	// overridable settings that the user may define in settings.php
 	private static $isInDemoMode = false;
 	private static $dbHostname;
+	private static $dbPort;
 	private static $dbName;
 	private static $dbUsername;
 	private static $dbPassword;
@@ -172,6 +173,7 @@ class Core {
 			require_once($settingsFilePath);
 			self::$isInDemoMode = (isset($demoMode) && is_bool($demoMode)) ? $demoMode : null;
 			self::$dbHostname = (isset($dbHostname)) ? $dbHostname : null;
+			self::$dbPort = (isset($dbPort)) ? $dbPort : null;
 			self::$dbName     = (isset($dbName)) ? $dbName : null;
 			self::$dbUsername = (isset($dbUsername)) ? $dbUsername : null;
 			self::$dbPassword = (isset($dbPassword)) ? $dbPassword : null;
@@ -255,6 +257,13 @@ class Core {
 	 */
 	public static function getHostname() {
 		return self::$dbHostname;
+	}
+
+	/**
+	 * @access public
+	 */
+	public static function getPort() {
+		return self::$dbPort;
 	}
 
 	/**

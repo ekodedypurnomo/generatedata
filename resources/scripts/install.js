@@ -126,6 +126,13 @@ require([
 			errors.push({ fieldId: "dbHostname", error: _L.validation_no_db_hostname });
 		}
 
+		var dbPort = $.trim($("#dbPort").val());
+		if (dbPort === "") {
+			errors.push({ fieldId: "dbPort", error: _L.validation_no_db_name });
+		} else if (validChars.test(dbPort)) {
+			errors.push({ fieldId: "dbPort", error: _L.validation_invalid_chars });
+		}
+
 		var dbName = $.trim($("#dbName").val());
 		if (dbName === "") {
 			errors.push({ fieldId: "dbName", error: _L.validation_no_db_name });
@@ -159,6 +166,7 @@ require([
 		// all looks good! Keep track of the inputted vars for later use
 		_dbSettings = {
 			dbHostname: dbHostname,
+			dbPort: dbPort,
 			dbName: dbName,
 			dbUsername: dbUsername,
 			dbPassword: dbPassword,
@@ -176,6 +184,7 @@ require([
 			data: {
 				action: "installationTestDbSettings",
 				dbHostname: dbHostname,
+				dbPort: dbPort,
 				dbName: dbName,
 				dbUsername: dbUsername,
 				dbPassword: dbPassword
@@ -208,6 +217,7 @@ require([
 			data: {
 				action: "installationCreateSettingsFile",
 				dbHostname: _dbSettings.dbHostname,
+				dbPort: _dbSettings.dbPort,
 				dbName: _dbSettings.dbName,
 				dbUsername: _dbSettings.dbUsername,
 				dbPassword: _dbSettings.dbPassword,
